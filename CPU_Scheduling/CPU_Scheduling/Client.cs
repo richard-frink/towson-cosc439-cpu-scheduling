@@ -37,16 +37,21 @@ namespace CPU_Scheduling
 
         public static int getInput()
         {
-            int num;
+            int result;
             while (true)
             {
-                Console.Write("Enter '1' to read from a file, or '2' to generate a random list of processes: ");
+                Console.Write("Enter '1' to generate a random list of processes, or '2' to read predefined precesses from a text file: ");
                 string output = Console.ReadLine();
 
-                if(int.Parse(output) == 1 || int.Parse(output) == 2)
+                int num;
+
+                if (Int32.TryParse(output, out num))
                 {
-                    num = int.Parse(output);
-                    break;
+                    if (num == 1 || num == 2)
+                    {
+                        result = int.Parse(output);
+                        break;
+                    } 
                 }
                 else
                 {
@@ -54,14 +59,14 @@ namespace CPU_Scheduling
                 }
             }
 
-            return num;
+            return result;
         }
 
         public static Tuple<int, int, int>[] getProcessList(string[] processes)
         {
             Tuple<int, int, int>[] output = new Tuple<int, int, int>[processes.Length / 3];
 
-            for (int i = 0; i < processes.Length; i++)
+            for (int i = 0; i < processes.Length / 3; i++)
             {
                 Tuple<int, int, int> j = new Tuple<int, int, int>(int.Parse(processes[i * 3]), int.Parse(processes[i * 3 + 1]), int.Parse(processes[i * 3 + 2]));
                 output[i] = j;
