@@ -16,7 +16,7 @@ namespace CPU_Scheduling
         private int currentTime;
         
         // Constructor
-        public Scheduler(List<Tuple<int, int>> input)
+        public Scheduler(Tuple<int, int, int>[] input)
         {
             processInputs(input);
             currentTime = 0;
@@ -37,12 +37,11 @@ namespace CPU_Scheduling
                 // scan the process queue for any jobs that came in at the given time and put into ready queue.
         }
 
-        private void processInputs(List<Tuple<int, int>> userProcesses)
+        private void processInputs(Tuple<int, int, int>[] userProcesses)
         {
-            userProcesses.ToArray();
-            turnaroundTimes = new Tuple<int, int>[userProcesses.Count];
-            waitTimes = new Tuple<int, int>[userProcesses.Count];
-            for (int i = 0; i < userProcesses.Count; i++)
+            turnaroundTimes = new Tuple<int, int>[userProcesses.Length];
+            waitTimes = new Tuple<int, int>[userProcesses.Length];
+            for (int i = 0; i < userProcesses.Length; i++)
             {
 
             }
